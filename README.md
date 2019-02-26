@@ -12,6 +12,7 @@ I have created this sample with instructions and comments so I do not forget whe
 I have updated *model.components* in *build.gradle*. From terminal, you can now call `./gradlew helloSharedLibrary` without errors. Object and Shared Object files will be created in the *build* directory as follows:
 * build/objs/hello/shared/helloC/46gd7i53yh3z9kv2bj1ure0t2/hello.o
 * build/libs/hello/shared/libhello.so
+
 (This may differ slightly on Windows)
 
 Attempt to run *HelloWorld.java* (I have included a 'main' method, so you can run the class file directly by right-clicking on it and selecting *run*). This will fail at first with an UnsatisfiedLinkError, but it does generate a stub of a build configuration, 'HelloWorld'.
@@ -22,5 +23,6 @@ Apply the changes and dismiss the dialog. You can now run the example. You will 
 
 Note that if you edit the C code, you will have to invoke `./gradlew helloSharedLibrary` again in order to recompile the shared object. You don't want to rebuild your native libraries automatically every time you edit your java/kotlin code.
 
-I have added a stub test class. You will need to edit its build configuration too: `-Djava.library.path="build/libs/hello/shared"`
+I have added a stub test class. Right click to run tests. It will fail at first too.
+You will need to edit its build configuration likewise: `-Djava.library.path="build/libs/hello/shared"`
 
