@@ -26,3 +26,12 @@ Note that if you edit the C code, you will have to invoke `./gradlew helloShared
 I have added a stub test class. Right click to run tests. It will fail at first too.
 You will need to edit its build configuration likewise: `-Djava.library.path="build/libs/hello/shared"`
 
+
+## Android Studio users
+Note that these instructions do not apply to Android Studio, where the process differs (and is less problematic). 
+
+Instructions on NDK integration [here](https://developer.android.com/ndk/guides), or better still, download the [developer samples](https://github.com/googlesamples/android-ndk) and play with them.
+
+In fact, by far simplest, from Android Studio, select *File -> New -> Import Sample*. Type *ndk* in the filterbox to navigate quickly and select from the many NDK samples. These should run out of the box once you have NDK prepared as shown in the [guide](https://developer.android.com/ndk/guides) first.
+
+NDK (Native Development Kit) is JNI for Android, BTW.
