@@ -22,23 +22,24 @@ model {
 
     components {
         hello(NativeLibrarySpec) {
+            def jvmHome = "${org.gradle.internal.jvm.Jvm.current().javaHome}"
             binaries.all {
                 if (targetPlatform.operatingSystem.macOsX) {
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/darwin"
+                    cCompiler.args '-I', "$jvmHome/include"
+                    cCompiler.args '-I', "$jvmHome/include/darwin"
                     cCompiler.args '-mmacosx-version-min=10.4'
                     linker.args '-mmacosx-version-min=10.4'
                 } else if (targetPlatform.operatingSystem.linux) {
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/linux"
+                    cCompiler.args '-I', "$jvmHome/include"
+                    cCompiler.args '-I', "$jvmHome/include/linux"
                     cCompiler.args '-D_FILE_OFFSET_BITS=64'
                 } else if (targetPlatform.operatingSystem.windows) {
-                    cCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
-                    cCompiler.args "-I${org.gradle.internal.jvm.Jvm.current().javaHome}/include/win32"
+                    cCompiler.args "-I$jvmHome/include"
+                    cCompiler.args "-I$jvmHome/include/win32"
                     linker.args "Shlwapi.lib", "Advapi32.lib"
                 } else if (targetPlatform.operatingSystem.freeBSD) {
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include"
-                    cCompiler.args '-I', "${org.gradle.internal.jvm.Jvm.current().javaHome}/include/freebsd"
+                    cCompiler.args '-I', "$jvmHome/include"
+                    cCompiler.args '-I', "$jvmHome/include/freebsd"
                 }
             }
         }
